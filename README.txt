@@ -1,4 +1,15 @@
 For anyone wanting to use this
+
+firstly the c file must be compiled before anything
+you can do this if you have a gcc compiler by
+
+on windows
+gcc path_finder_engine.c -o path_finder_engine.exe
+
+on macOS/linux
+gcc path_finder_engine.c -o path_finder_engine
+chmod +x path_finder_engine
+
 Input:
 
 1.For pure CSV

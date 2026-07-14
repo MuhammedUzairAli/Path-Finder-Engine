@@ -10,6 +10,8 @@ on macOS/linux
 gcc path_finder_engine.c -o path_finder_engine
 chmod +x path_finder_engine
 
+size cannot be above 125 by 125 pxls.
+
 Input:
 
 1.For pure CSV

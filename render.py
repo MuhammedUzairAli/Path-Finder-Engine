@@ -96,8 +96,8 @@ def rend ():
     fig,ax = plt.subplots(figsize = (numcol,numrow))
     colrmap = clr.ListedColormap(clrs)
     img = ax.imshow(old_map,cmap=colrmap,origin = 'upper')
-    ax.xaxis.set_major_locator(Ml(1))
-    ax.yaxis.set_major_locator(Ml(1))
+    ax.xaxis.set_major_locator(Ml(1 if numcol < 50 else int(numcol/10)))
+    ax.yaxis.set_major_locator(Ml(1 if numrow < 50 else int(numrow/10)))
     font_size = max(3,12 * (10 / max(numrow,numcol))) #im taking 12 the normal size for 10 cols or 10 rows
     ovr = ax.imshow(overlay,origin = 'upper') #the overlay is made ontop of previous map with transparency values
     hubTxt = []
@@ -167,6 +167,17 @@ def rend ():
             print()
             iter += 1
     plt.ioff()
-    plt.show()             
+    plt.show()
+    if(plt.fignum_exists(fig.number)):
+        plt.pause(0.1)
+        while(plt.fignum_exists(fig.number)):
+            activeHub.set_color('blue')
+            activeVil.set_color('black')
+            plt.pause(0.1)
+            activeHub.set_color('white')
+            activeVil.set_color('white')
+            if plt.waitforbuttonpress(timeout=0.3):
+                break
+    plt.close(fig)              
 if __name__ == '__main__':
     rend()

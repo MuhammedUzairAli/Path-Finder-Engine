@@ -47,8 +47,8 @@ void assign_map(FILE* pterrain,node map[],int cols,int rows){
     int j=0;
     int i=0;
     int count=0;
-    char buffer[255];
-    while(fgets(buffer,255, pterrain) != NULL && i < rows){ //the i < rows is redundent its here to be safe
+    char buffer[300];
+    while(fgets(buffer,300, pterrain) != NULL && i < rows){ //the i < rows is redundent its here to be safe
         j=0;
         count = 0;
         while(count < cols && buffer[j] != '\n' && buffer[j] != '\0'){
@@ -304,8 +304,8 @@ int main(){
     int tempcols = 0;
     int hubs=0;
     int vils=0;
-    //255 value for buffer is temporary later itll be set to processing far more
-    char buffer[255];
+
+    char buffer[300]; //300 to account for commas and extra chars
     
     FILE *pterrain = fopen("terrain.csv","r");
     if (!pterrain){
@@ -316,7 +316,7 @@ int main(){
     int i=0;
     int j=0;
     //code for getting cols and rows
-    while (fgets(buffer,255,pterrain) != NULL && buffer[0] != '\n' ){
+    while (fgets(buffer,300,pterrain) != NULL && buffer[0] != '\n' ){
         tempcols = 0;
         for(i=0; buffer[i] != '\n' && buffer[i] != '\0' ; i++){
             if(buffer[i] == ','){ 
